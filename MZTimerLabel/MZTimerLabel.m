@@ -376,12 +376,12 @@
                     NSAttributedString *attrTextInRange = [[NSAttributedString alloc] initWithString:[self.dateFormatter stringFromDate:timeToShow] attributes:self.attributedDictionaryForTextInRange];
                     
                     NSMutableAttributedString *attributedString;
-                    attributedString = [[NSMutableAttributedString alloc]initWithString:self.text];
+                    attributedString = [[NSMutableAttributedString alloc]initWithString:self.templateText];
                     [attributedString replaceCharactersInRange:self.textRange withAttributedString:attrTextInRange];
                     self.timeLabel.attributedText = attributedString;
         
                 } else {
-                    NSString *labelText = [self.text stringByReplacingCharactersInRange:self.textRange withString:[self.dateFormatter stringFromDate:timeToShow]];
+                    NSString *labelText = [self.templateText stringByReplacingCharactersInRange:self.textRange withString:[self.dateFormatter stringFromDate:timeToShow]];
                     self.timeLabel.text = labelText;
                 }
             } else {

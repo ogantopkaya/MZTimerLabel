@@ -91,6 +91,8 @@ typedef enum{
 /*Do you want the timer to count beyond the HH limit from 0-23 e.g. 25:23:12 (HH:mm:ss) */
 @property (assign,nonatomic) BOOL shouldCountBeyondHHLimit;
 
+@property (nonatomic,strong) NSString *templateText;
+
 #if NS_BLOCKS_AVAILABLE
 @property (copy) void (^endedBlock)(NSTimeInterval);
 #endif
