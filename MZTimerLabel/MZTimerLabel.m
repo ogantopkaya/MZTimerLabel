@@ -347,12 +347,8 @@
     //setting text value
     if ([_delegate respondsToSelector:@selector(timerLabel:customTextToDisplayAtTime:)]) {
         NSTimeInterval atTime = (_timerType == MZTimerLabelTypeStopWatch) ? timeDiff : ((timeUserValue - timeDiff) < 0 ? 0 : (timeUserValue - timeDiff));
-        NSString *customtext = [_delegate timerLabel:self customTextToDisplayAtTime:atTime];
-        if ([customtext length]) {
-            self.timeLabel.text = customtext;
-        }else{
-            self.timeLabel.text = [self.dateFormatter stringFromDate:timeToShow];
-        }
+        NSAttributedString *customtext = [_delegate timerLabel:self customTextToDisplayAtTime:atTime];
+        self.timeLabel.attributedText = customtext;
     }else{
         
         if(_shouldCountBeyondHHLimit) {
