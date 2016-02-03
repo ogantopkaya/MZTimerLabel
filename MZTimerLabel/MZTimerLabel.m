@@ -32,7 +32,6 @@
 #define kDefaultTimeFormat  @"HH:mm:ss"
 #define kHourFormatReplace  @"!!!*"
 #define kDefaultFireIntervalNormal  0.1
-#define kDefaultFireIntervalHighUse  0.01
 #define kDefaultTimerType MZTimerLabelTypeStopWatch
 
 @interface MZTimerLabel(){
@@ -243,11 +242,7 @@
         _timer = nil;
     }
     
-    if ([self.timeFormat rangeOfString:@"SS"].location != NSNotFound) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:kDefaultFireIntervalHighUse target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
-    }else{
-        _timer = [NSTimer scheduledTimerWithTimeInterval:kDefaultFireIntervalNormal target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
-    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:kDefaultFireIntervalNormal target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     
     if(startCountDate == nil){
